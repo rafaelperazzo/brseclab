@@ -2,10 +2,9 @@
 
 # dependencies
 node_modules/
-appBrSecLab/node_modules/
+
 # Expo
 .expo/
-appBrSecLab/expo/
 dist/
 web-build/
 expo-env.d.ts
@@ -35,4 +34,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-appBrSecLab/.env
