@@ -2,8 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import { Button } from '@rneui/themed';
-//import supabase from '../database/database';
-
 export default function Principal() {
   return (
     <View style={styles.container}>
