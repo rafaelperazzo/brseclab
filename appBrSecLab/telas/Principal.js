@@ -1,29 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, SafeAreaView, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import { Button } from '@rneui/themed';
-export default function Principal() {
+import { useEffect, useState } from 'react';
+import NetInfo from '@react-native-community/netinfo';
+import supabase from '../database/database';
+
+export default function Principal({ navigation }) {
+  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const state = await NetInfo.fetch();
+        if (state.isConnected) {
+          console.log("Conectado à internet");
+          /*let { data: Pessoas, error } = await supabase
+          .from('Pessoas')
+          .select('*')
+          console.log("Pessoas: ", Pessoas);*/
+        } 
+        else {
+          console.log("Desconectado da internet");
+        }
+      } catch (error) {
+        console.log("Erro ao acessar a base de dados: ", error);
+      }
+    }
+    fetchData();
+  },[]);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.cabecalho}>
+    <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.cabecalho}>
           <Image
             style={styles.logo}
             source={require('../assets/logo.jpg')}
             resizeMode='cover'
           >
           </Image>
-      </View>
-      <View style={styles.conteudo}>
+      </SafeAreaView>
+      <SafeAreaView style={styles.conteudo}>
         <Text variant='titleSmall'>Laboratório de Segurança - Departamento de Computação - DC</Text>
         <Text variant='titleSmall'>Universidade Federal Rural de Pernambuco - UFRPE</Text>
-      </View>
-      <View style={styles.botoes}>
+      </SafeAreaView>
+      <SafeAreaView style={styles.botoes}>
         <Button buttonStyle={styles.botao} mode="contained" 
-            onPress={() => console.log('Pressed')}>
+            onPress={() => navigation.navigate('Projetos') }>
             Projetos
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" 
-            onPress={() => console.log('Pressed')}>
+            onPress={() => navigation.navigate('Pessoas') }>
             Pessoas
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" 
@@ -38,9 +64,9 @@ export default function Principal() {
             onPress={() => console.log('Pressed')}>
             Recursos
         </Button>
-      </View>
+      </SafeAreaView>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
