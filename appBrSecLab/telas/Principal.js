@@ -5,19 +5,24 @@ import { Button } from '@rneui/themed';
 import { useEffect, useState } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import supabase from '../database/database';
+import { ActivityIndicator } from 'react-native-paper';
 
 export default function Principal({ navigation }) {
-  
+  const [carregando, setCarregando] = useState(true);
+  const [desativado, setDesativado] = useState(true);
+  const [pessoas, setPessoas] = useState([]);
   useEffect(() => {
     async function fetchData() {
       try {
+        setCarregando(true);
         const state = await NetInfo.fetch();
         if (state.isConnected) {
-          console.log("Conectado à internet");
-          /*let { data: Pessoas, error } = await supabase
+          let { data: Pessoas, error } = await supabase
           .from('Pessoas')
-          .select('*')
-          console.log("Pessoas: ", Pessoas);*/
+          .select('*');
+          setCarregando(false);
+          setDesativado(false);
+          setPessoas(Pessoas);
         } 
         else {
           console.log("Desconectado da internet");
@@ -27,6 +32,7 @@ export default function Principal({ navigation }) {
       }
     }
     fetchData();
+    
   },[]);
 
   return (
@@ -44,27 +50,28 @@ export default function Principal({ navigation }) {
         <Text variant='titleSmall'>Universidade Federal Rural de Pernambuco - UFRPE</Text>
       </SafeAreaView>
       <SafeAreaView style={styles.botoes}>
-        <Button buttonStyle={styles.botao} mode="contained" 
+        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
             onPress={() => navigation.navigate('Projetos') }>
             Projetos
         </Button>
-        <Button buttonStyle={styles.botao} mode="contained" 
-            onPress={() => navigation.navigate('Pessoas') }>
+        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+            onPress={() => navigation.navigate('Pessoas',{dados: pessoas}) }>
             Pessoas
         </Button>
-        <Button buttonStyle={styles.botao} mode="contained" 
+        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
             onPress={() => console.log('Pressed')}>
             Eventos
         </Button>
-        <Button buttonStyle={styles.botao} mode="contained" 
+        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
             onPress={() => console.log('Pressed')}>
             Publicações
         </Button>
-        <Button buttonStyle={styles.botao} mode="contained" 
+        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
             onPress={() => console.log('Pressed')}>
             Recursos
         </Button>
       </SafeAreaView>
+      <ActivityIndicator animating={carregando} />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
