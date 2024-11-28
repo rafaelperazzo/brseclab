@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import supabase from '../database/database';
 import { ActivityIndicator } from 'react-native-paper';
+import { getData,getObject,storeData,storeObject } from './storage/Storage';
 
 export default function Principal({ navigation }) {
   const [carregando, setCarregando] = useState(true);
@@ -23,6 +24,8 @@ export default function Principal({ navigation }) {
           setCarregando(false);
           setDesativado(false);
           setPessoas(Pessoas);
+          await storeObject('Pessoas',Pessoas);
+          await storeData('atualizado',new Date().toISOString());
         } 
         else {
           console.log("Desconectado da internet");
