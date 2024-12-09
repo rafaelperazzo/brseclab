@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Principal from './telas/Principal';
 import Projetos from './telas/Projetos';
 import Pessoas from './telas/Pessoas';
+import Recursos from './telas/Recursos';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,10 @@ export default function App() {
           <Stack.Screen
             name="Pessoas"
             component={Pessoas}
+          />
+          <Stack.Screen
+            name="Recursos"
+            component={Recursos}
           />
         </Stack.Navigator>
       </NavigationContainer>
