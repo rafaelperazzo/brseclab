@@ -25,7 +25,7 @@ export default function Pessoas({route}) {
                             left={(props) => <Avatar.Image size={50} source={{uri: process.env.EXPO_PUBLIC_SUPABASE_STORAGE_URL + pessoa.avatar}} />}               
                         />
                         <Card.Content>
-                            <Text style={styles.contato}>{pessoa.contato}</Text>
+                            <Text style={styles.contato}>{pessoa.contato.replace(/(\w{3})[\w.-]+@([\w.]+\w)/, "$1***@$2")}</Text>
                             <Text style={styles.vinculo}>{pessoa.vinculo}</Text>
                         </Card.Content>
                     </Card>

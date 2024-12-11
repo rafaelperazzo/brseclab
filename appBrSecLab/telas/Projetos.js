@@ -24,11 +24,11 @@ export default function Projetos() {
                         <Card style={styles.card}>
                             <Card.Title
                                 title={projeto.titulo.toUpperCase()}
+                                titleNumberOfLines={10}
                                 subtitle={projeto.coordenador}
-                                subtitleNumberOfLines={3}
+                                subtitleNumberOfLines={5}
                                 titleVariant="titleSmall"
                                 subtitleVariant="bodySmall"
-                                titleNumberOfLines={3}
                                 left={(props) => <Avatar.Icon {...props} icon="brain" />}
                             />
                             <Card.Content>
