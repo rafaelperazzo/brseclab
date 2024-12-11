@@ -1,5 +1,5 @@
 import {ScrollView, StyleSheet} from "react-native";
-import { Text, Card,Avatar, Divider } from "react-native-paper";
+import { Text, Card,Avatar } from "react-native-paper";
 import { useEffect, useState } from "react";
 
 export default function Pessoas({route}) {

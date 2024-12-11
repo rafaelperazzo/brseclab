@@ -23,6 +23,9 @@ const storeData = async (key,value) => {
       if (value !== null) {
         return value;
       }
+      else {
+        return null;
+      }
     } catch (e) {
       // error reading value
     }
