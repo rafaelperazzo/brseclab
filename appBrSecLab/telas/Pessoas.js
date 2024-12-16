@@ -1,35 +1,40 @@
-import {ScrollView, StyleSheet} from "react-native";
+import {ScrollView, StyleSheet,SafeAreaView} from "react-native";
 import { Text, Card,Avatar } from "react-native-paper";
 import { useEffect, useState } from "react";
+import { getObject } from "./storage/Storage";
 
-export default function Pessoas({route}) {
-    const {dados} = route.params;
-    const [pessoas, setPessoas] = useState(dados);
+export default function Pessoas() {
+    const [pessoas, setPessoas] = useState([]);
     useEffect(() => {
-        
+        async function carregarPessoas() {
+            const pessoas = await getObject('Pessoas');
+            setPessoas(pessoas);
+        }
+        carregarPessoas();
     }, []);
     return (
         <ScrollView>
             {pessoas.map((pessoa) => {
                 return (
-                    <Card style={styles.card}>
-                        <Card.Title
-                            title={pessoa.nome}
-                            subtitle={pessoa.afiliacao}
-                            subtitleNumberOfLines={3}
-                            titleVariant="titleLarge"
-                            subtitleVariant="bodyMedium"
-                            titleNumberOfLines={3}
-                            style={styles.titulo} 
-                            subtitleStyle={styles.subtitulo} 
-                            left={(props) => <Avatar.Image size={50} source={{uri: process.env.EXPO_PUBLIC_SUPABASE_STORAGE_URL + pessoa.avatar}} />}               
-                        />
-                        <Card.Content>
-                            <Text style={styles.contato}>{pessoa.contato.replace(/(\w{3})[\w.-]+@([\w.]+\w)/, "$1***@$2")}</Text>
-                            <Text style={styles.vinculo}>{pessoa.vinculo}</Text>
-                        </Card.Content>
-                    </Card>
-                    
+                    <SafeAreaView>
+                        <Card style={styles.card}>
+                            <Card.Title
+                                title={pessoa.nome.toUpperCase()}
+                                subtitle={pessoa.afiliacao.toUpperCase()}
+                                subtitleNumberOfLines={3}
+                                titleVariant="titleLarge"
+                                subtitleVariant="bodyMedium"
+                                titleNumberOfLines={3}
+                                style={styles.titulo} 
+                                subtitleStyle={styles.subtitulo} 
+                                left={(props) => <Avatar.Image size={50} source={{uri: process.env.EXPO_PUBLIC_SUPABASE_STORAGE_URL + pessoa.avatar}} />}               
+                            />
+                            <Card.Content>
+                                <Text style={styles.contato}>{pessoa.contato.replace(/(\w{3})[\w.-]+@([\w.]+\w)/, "$1***@$2")}</Text>
+                                <Text style={styles.vinculo}>{pessoa.vinculo.toUpperCase()}</Text>
+                            </Card.Content>
+                        </Card>
+                    </SafeAreaView>
                 );
             }
             )}

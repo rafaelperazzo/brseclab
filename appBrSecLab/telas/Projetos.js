@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { Text, SafeAreaView,ScrollView } from "react-native";
 import { ActivityIndicator, Card, Avatar } from "react-native-paper";
-import { fetchData } from "../util/funcoes";
 import { StyleSheet } from "react-native";
+import { getObject } from "./storage/Storage";
 
 export default function Projetos() {
     const [projetos,setProjetos] = useState([]);
     const [carregando,setCarregando] = useState(true);
     useEffect(() => {
-        async function baixarProjetos() {
-            setCarregando(true);
-            const dados = await fetchData('Projetos','titulo');
-            setProjetos(dados);
+        async function carregarProjetos() {
+            const projetos = await getObject('Projetos');
+            setProjetos(projetos);
             setCarregando(false);
         }
-        baixarProjetos();
+        carregarProjetos();
     }, []);
     return (
         <ScrollView>

@@ -3,51 +3,28 @@ import { StyleSheet, SafeAreaView, Image, Linking } from 'react-native';
 import { Text, Divider } from 'react-native-paper';
 import { Button } from '@rneui/themed';
 import { useEffect, useState } from 'react';
-import NetInfo from '@react-native-community/netinfo';
-import supabase from '../database/database';
 import { ActivityIndicator } from 'react-native-paper';
-import { getData,getObject,storeData,storeObject } from './storage/Storage';
 import * as Application from 'expo-application';
+import { fetchData } from '../util/funcoes';
+
+async function recarregarDados() {
+  await fetchData('Pessoas','nome');
+  await fetchData('Projetos','titulo');
+}
 
 export default function Principal({ navigation }) {
-  const [carregando, setCarregando] = useState(true);
+  const [carregando, setCarregando] = useState(false);
   const [desativado, setDesativado] = useState(true);
-  const [pessoas, setPessoas] = useState([]);
   useEffect(() => {
-    async function fetchData() {
-      try {
-        setCarregando(true);
-        const state = await NetInfo.fetch();
-        if (state.isConnected) {
-          let { data: Pessoas, error } = await supabase
-          .from('Pessoas')
-          .select('*').order('nome');
-          
-          setCarregando(false);
-          setDesativado(false);
-          setPessoas(Pessoas);
-          await storeObject('Pessoas',Pessoas);
-          await storeData('atualizado',new Date().toISOString());
-        } 
-        else {
-          console.log("Desconectado da internet");
-          let dados = await getObject('Pessoas');
-          if (dados) {
-            setPessoas(dados);
-            setCarregando(false);
-            setDesativado(false);
-          }
-          else {
-            console.log("Sem dados na base local");
-            setCarregando(false);
-            setDesativado(true);
-          }
-        }
-      } catch (error) {
-        console.log("Erro ao acessar a base de dados: ", error);
-      }
+    async function baixarDados() {
+      setCarregando(true);
+      await fetchData('Pessoas','nome');
+      await fetchData('Projetos','titulo');
+      setCarregando(false);
+      setDesativado(false);
     }
-    fetchData();
+    
+    baixarDados();
   },[]);
 
   return (
@@ -71,7 +48,7 @@ export default function Principal({ navigation }) {
             Projetos
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            onPress={() => navigation.navigate('Pessoas',{dados: pessoas}) }>
+            onPress={() => navigation.navigate('Pessoas') }>
             Pessoas
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
