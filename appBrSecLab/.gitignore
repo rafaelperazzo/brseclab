@@ -8,7 +8,7 @@ node_modules/
 dist/
 web-build/
 expo-env.d.ts
-
+brseclabapp-f1544786a12f.json
 # Native
 *.orig.*
 *.jks

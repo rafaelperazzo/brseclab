@@ -19,7 +19,7 @@ export default function Projetos() {
         <ScrollView>
             {projetos.map((projeto) => {
                 return (
-                    <SafeAreaView>
+                    <SafeAreaView key={projeto.id}>
                         <Card style={styles.card}>
                             <Card.Title
                                 title={projeto.titulo.toUpperCase()}

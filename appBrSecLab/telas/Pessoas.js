@@ -16,7 +16,7 @@ export default function Pessoas() {
         <ScrollView>
             {pessoas.map((pessoa) => {
                 return (
-                    <SafeAreaView>
+                    <SafeAreaView key={pessoa.id}>
                         <Card style={styles.card}>
                             <Card.Title
                                 title={pessoa.nome.toUpperCase()}
