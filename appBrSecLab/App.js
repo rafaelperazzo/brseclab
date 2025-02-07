@@ -4,6 +4,8 @@ import Principal from './telas/Principal';
 import Projetos from './telas/Projetos';
 import Pessoas from './telas/Pessoas';
 import Recursos from './telas/Recursos';
+import Eventos from './telas/Eventos';
+import Publicacoes from './telas/Publicacoes';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,14 @@ export default function App() {
           <Stack.Screen
             name="Recursos"
             component={Recursos}
+          />
+          <Stack.Screen
+            name="Eventos"
+            component={Eventos}
+          />
+          <Stack.Screen
+            name="Publicacoes"
+            component={Publicacoes}
           />
         </Stack.Navigator>
       </NavigationContainer>

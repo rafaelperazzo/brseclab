@@ -52,11 +52,11 @@ export default function Principal({ navigation }) {
             Pessoas
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            onPress={() => console.log('Pressed')}>
+            onPress={() => navigation.navigate('Eventos')}>
             Eventos
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            onPress={() => console.log('Pressed')}>
+            onPress={() => navigation.navigate('Publicacoes')}>
             Publicações
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
