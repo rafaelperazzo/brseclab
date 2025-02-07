@@ -3,6 +3,8 @@
 # dependencies
 node_modules/
 appBrSecLab/node_modules/
+appBrSecLab/build/*.aab
+appBrSecLab/build/*.apk
 # Expo
 .expo/
 appBrSecLab/expo/
