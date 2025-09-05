@@ -16,7 +16,7 @@ export default function Projetos() {
         carregarProjetos();
     }, []);
     return (
-        <ScrollView>
+        <ScrollView testID="viewProjetos">
             {projetos.map((projeto) => {
                 return (
                     <SafeAreaView key={projeto.id}>

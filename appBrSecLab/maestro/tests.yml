@@ -1,0 +1,9 @@
+appId: com.rafaelperazzo.appBrSecLab
+---
+- launchApp
+- assertVisible: "Universidade Federal Rural de Pernambuco - UFRPE"
+- tapOn:
+    id: "botaoProjetos"
+- assertVisible: 
+    id: "viewProjetos"
+- back

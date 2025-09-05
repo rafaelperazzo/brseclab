@@ -44,22 +44,27 @@ export default function Principal({ navigation }) {
       </SafeAreaView>
       <SafeAreaView style={styles.botoes}>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+            testID='botaoProjetos'
             onPress={() => navigation.navigate('Projetos') }>
             Projetos
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+            testID='botaoPessoas'
             onPress={() => navigation.navigate('Pessoas') }>
             Pessoas
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+            testID='botaoEventos'
             onPress={() => navigation.navigate('Eventos')}>
             Eventos
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+            testID='botaoPublicacoes'
             onPress={() => navigation.navigate('Publicacoes')}>
             Publicações
         </Button>
         <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+            testID='botaoRecursos'
             onPress={() => navigation.navigate('Recursos')}>
             Recursos
         </Button>
