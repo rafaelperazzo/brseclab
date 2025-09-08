@@ -19,7 +19,8 @@
     "production": {
       "android": {
         "serviceAccountKeyPath": "./brseclabapp-f1544786a12f.json",
-        "track": "internal"
+        "releaseStatus": "completed",
+        "track": "production"
       }
     }
   }
