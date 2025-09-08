@@ -17,6 +17,3 @@ jobs:
     params:
       platform: android
       build_id: ${{ needs.build_android.outputs.build_id }}
-      track: production
-      serviceAccountKeyPath: ./brseclabapp-f1544786a12f.json
-      releaseStatus: completed

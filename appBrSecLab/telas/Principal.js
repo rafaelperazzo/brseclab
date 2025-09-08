@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView, Image, Linking } from 'react-native';
 import { Text, Divider } from 'react-native-paper';
 import { Button } from '@rn-vui/themed';
@@ -80,7 +79,7 @@ export default function Principal({ navigation }) {
         <Text variant='bodySmall'>Rua Dom Manoel de Medeiros, s/n, Dois Irmãos, Recife, PE, Brasil</Text>
         <Text variant='bodySmall'>Versão: {Application.nativeApplicationVersion}</Text>
       </SafeAreaView>
-      <StatusBar style="auto" />
+      
     </SafeAreaView>
   );
 }
