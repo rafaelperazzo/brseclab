@@ -1,4 +1,4 @@
-import { Card } from '@rneui/themed';
+import { Card } from '@rn-vui/themed';
 
 export default function Botao(props) {
     return (

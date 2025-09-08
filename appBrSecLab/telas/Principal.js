@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView, Image, Linking } from 'react-native';
 import { Text, Divider } from 'react-native-paper';
-import { Button } from '@rneui/themed';
+import { Button } from '@rn-vui/themed';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native-paper';
 import * as Application from 'expo-application';
