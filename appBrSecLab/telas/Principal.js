@@ -1,10 +1,11 @@
-import { StyleSheet, SafeAreaView, Image, Linking } from 'react-native';
+import { StyleSheet, Image, Linking } from 'react-native';
 import { Text, Divider } from 'react-native-paper';
 import { Button } from '@rn-vui/themed';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native-paper';
 import * as Application from 'expo-application';
 import { fetchData } from '../util/funcoes';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 async function recarregarDados() {
   await fetchData('Pessoas','nome');
@@ -27,60 +28,61 @@ export default function Principal({ navigation }) {
   },[]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <SafeAreaView style={styles.cabecalho}>
-          <Image
-            style={styles.logo}
-            source={require('../assets/logo.jpg')}
-            resizeMode='cover'
-          >
-          </Image>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container} edges={['right', 'top', 'left']}>
+        <SafeAreaView style={styles.cabecalho}>
+            <Image
+              style={styles.logo}
+              source={require('../assets/logo.jpg')}
+              resizeMode='cover'
+            >
+            </Image>
+        </SafeAreaView>
+        <SafeAreaView style={styles.conteudo}>
+          <Text variant='titleSmall'>Laboratório de CiberSegurança</Text>
+          <Text variant='titleSmall'>Departamento de Computação - DC</Text>
+          <Text variant='titleSmall'>Universidade Federal Rural de Pernambuco - UFRPE</Text>
+        </SafeAreaView>
+        <SafeAreaView style={styles.botoes}>
+          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+              testID='botaoProjetos'
+              onPress={() => navigation.navigate('Projetos') }>
+              Projetos
+          </Button>
+          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+              testID='botaoPessoas'
+              onPress={() => navigation.navigate('Pessoas') }>
+              Pessoas
+          </Button>
+          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+              testID='botaoEventos'
+              onPress={() => navigation.navigate('Eventos')}>
+              Eventos
+          </Button>
+          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+              testID='botaoPublicacoes'
+              onPress={() => navigation.navigate('Publicacoes')}>
+              Publicações
+          </Button>
+          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+              testID='botaoRecursos'
+              onPress={() => navigation.navigate('Recursos')}>
+              Recursos
+          </Button>
+        </SafeAreaView>
+        <ActivityIndicator animating={carregando} />
+        <SafeAreaView style={styles.rodape}>
+          <Divider />
+          <Text variant='bodySmall'
+                onPress={() => Linking.openURL('https://maps.app.goo.gl/EkaJtisTX6D7bFHi6')}
+                style={{color: 'blue'}}>
+                Departamento de Computação, 2o Andar, Sala 21
+          </Text>
+          <Text variant='bodySmall'>Rua Dom Manoel de Medeiros, s/n, Dois Irmãos, Recife, PE, Brasil</Text>
+          <Text variant='bodySmall'>Versão: {Application.nativeApplicationVersion}</Text>
+        </SafeAreaView>
       </SafeAreaView>
-      <SafeAreaView style={styles.conteudo}>
-        <Text variant='titleSmall'>Laboratório de CiberSegurança</Text>
-        <Text variant='titleSmall'>Departamento de Computação - DC</Text>
-        <Text variant='titleSmall'>Universidade Federal Rural de Pernambuco - UFRPE</Text>
-      </SafeAreaView>
-      <SafeAreaView style={styles.botoes}>
-        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            testID='botaoProjetos'
-            onPress={() => navigation.navigate('Projetos') }>
-            Projetos
-        </Button>
-        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            testID='botaoPessoas'
-            onPress={() => navigation.navigate('Pessoas') }>
-            Pessoas
-        </Button>
-        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            testID='botaoEventos'
-            onPress={() => navigation.navigate('Eventos')}>
-            Eventos
-        </Button>
-        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            testID='botaoPublicacoes'
-            onPress={() => navigation.navigate('Publicacoes')}>
-            Publicações
-        </Button>
-        <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
-            testID='botaoRecursos'
-            onPress={() => navigation.navigate('Recursos')}>
-            Recursos
-        </Button>
-      </SafeAreaView>
-      <ActivityIndicator animating={carregando} />
-      <SafeAreaView style={styles.rodape}>
-        <Divider />
-        <Text variant='bodySmall'
-              onPress={() => Linking.openURL('https://maps.app.goo.gl/EkaJtisTX6D7bFHi6')}
-              style={{color: 'blue'}}>
-              Departamento de Computação, 2o Andar, Sala 21
-        </Text>
-        <Text variant='bodySmall'>Rua Dom Manoel de Medeiros, s/n, Dois Irmãos, Recife, PE, Brasil</Text>
-        <Text variant='bodySmall'>Versão: {Application.nativeApplicationVersion}</Text>
-      </SafeAreaView>
-      
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
