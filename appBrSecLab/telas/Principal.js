@@ -1,4 +1,4 @@
-import { StyleSheet, Image, Linking } from 'react-native';
+import { StyleSheet, Image, Linking, Appearance } from 'react-native';
 import { Text, Divider } from 'react-native-paper';
 import { Button } from '@rn-vui/themed';
 import { useEffect, useState } from 'react';
@@ -22,6 +22,7 @@ export default function Principal({ navigation }) {
       await fetchData('Projetos','titulo');
       setCarregando(false);
       setDesativado(false);
+      Appearance.setColorScheme('light');
     }
     
     baixarDados();

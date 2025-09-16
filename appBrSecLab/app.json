@@ -2,10 +2,10 @@
   "expo": {
     "name": "appBrSecLab",
     "slug": "appBrSecLab",
-    "version": "6.0.0",
+    "version": "7.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.rafaelperazzo.appBrSecLab"
+      "package": "com.rafaelperazzo.appBrSecLab",
+      "userInterfaceStyle": "automatic"
     },
     "web": {
       "favicon": "./assets/favicon.png"

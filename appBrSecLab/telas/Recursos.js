@@ -1,6 +1,6 @@
-import { SafeAreaView } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from 'react-native-paper';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Recursos() {
     useEffect(() => {
@@ -11,9 +11,11 @@ export default function Recursos() {
     }, []);
 
     return (
-        <SafeAreaView>
-            <Text>Recursos</Text>
-            <Text>Em construção</Text>
-        </SafeAreaView>
+        <SafeAreaProvider>
+            <SafeAreaView>
+                <Text>Recursos</Text>
+                <Text>Em construção</Text>
+            </SafeAreaView>
+        </SafeAreaProvider>
     );
 }
