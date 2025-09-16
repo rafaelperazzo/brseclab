@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function Recursos() {
     useEffect(() => {
         async function baixarRecursos() {
-            console.log('Recursos.js: Recursos');
+            
         }
         baixarRecursos();
     }, []);

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function Publicacoes() {
     useEffect(() => {
         async function baixarPublicacoes() {
-            console.log('Publicacoes.js: Publicações');
+            
         }
         baixarPublicacoes();
     }, []);

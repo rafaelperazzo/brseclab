@@ -43,6 +43,10 @@ export default function Principal({ navigation }) {
           <Text variant='titleSmall'>Laboratório de CiberSegurança</Text>
           <Text variant='titleSmall'>Departamento de Computação - DC</Text>
           <Text variant='titleSmall'>Universidade Federal Rural de Pernambuco - UFRPE</Text>
+          
+        </SafeAreaView>
+        <SafeAreaView>
+          {carregando ? <ActivityIndicator animating={true} /> : null}
         </SafeAreaView>
         <SafeAreaView style={styles.botoes}>
           <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
@@ -71,7 +75,7 @@ export default function Principal({ navigation }) {
               Recursos
           </Button>
         </SafeAreaView>
-        <ActivityIndicator animating={carregando} />
+        
         <SafeAreaView style={styles.rodape}>
           <Divider />
           <Text variant='bodySmall'

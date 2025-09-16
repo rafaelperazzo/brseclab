@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function Eventos() {
     useEffect(() => {
         async function baixarEventos() {
-            console.log('Eventos.js: Eventos');
+            
         }
         baixarEventos();
     }, []);
