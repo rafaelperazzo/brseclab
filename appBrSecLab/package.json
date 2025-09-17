@@ -16,7 +16,7 @@
     "@rn-vui/base": "^5.1.10",
     "@rn-vui/themed": "^5.1.10",
     "@supabase/supabase-js": "^2.57.4",
-    "expo": "^54.0.7",
+    "expo": "54.0.8",
     "expo-application": "~7.0.7",
     "expo-status-bar": "~3.0.8",
     "react": "19.1.0",
