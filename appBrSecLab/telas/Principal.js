@@ -1,6 +1,5 @@
 import { StyleSheet, Image, Linking, Appearance } from 'react-native';
-import { Text, Divider } from 'react-native-paper';
-import { Button } from '@rn-vui/themed';
+import { Text, Divider, Button } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native-paper';
 import * as Application from 'expo-application';
@@ -49,27 +48,27 @@ export default function Principal({ navigation }) {
           {carregando ? <ActivityIndicator animating={true} /> : null}
         </SafeAreaView>
         <SafeAreaView style={styles.botoes}>
-          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+          <Button buttonStyle={styles.botao} mode="contained-tonal" disabled={desativado}
               testID='botaoProjetos'
               onPress={() => navigation.navigate('Projetos') }>
               Projetos
           </Button>
-          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+          <Button style={styles.botao} mode="contained-tonal" disabled={desativado}
               testID='botaoPessoas'
               onPress={() => navigation.navigate('Pessoas') }>
               Pessoas
           </Button>
-          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+          <Button style={styles.botao} mode="contained-tonal" disabled={desativado}
               testID='botaoEventos'
               onPress={() => navigation.navigate('Eventos')}>
               Eventos
           </Button>
-          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+          <Button style={styles.botao} mode="contained-tonal" disabled={desativado}
               testID='botaoPublicacoes'
               onPress={() => navigation.navigate('Publicacoes')}>
               Publicações
           </Button>
-          <Button buttonStyle={styles.botao} mode="contained" disabled={desativado}
+          <Button style={styles.botao} mode="contained-tonal" disabled={desativado}
               testID='botaoRecursos'
               onPress={() => navigation.navigate('Recursos')}>
               Recursos

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "appBrSecLab",
+    "name": "BrSecLab",
     "slug": "appBrSecLab",
-    "version": "7.0.0",
+    "version": "7.0.1",
     "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
