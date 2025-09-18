@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     card: {
-        margin: 10,
+        margin: 5,
     },
 });
