@@ -48,7 +48,7 @@ export default function Principal({ navigation }) {
           {carregando ? <ActivityIndicator animating={true} /> : null}
         </SafeAreaView>
         <SafeAreaView style={styles.botoes}>
-          <Button buttonStyle={styles.botao} mode="contained-tonal" disabled={desativado}
+          <Button style={styles.botao} mode="contained-tonal" disabled={desativado}
               testID='botaoProjetos'
               onPress={() => navigation.navigate('Projetos') }>
               Projetos
