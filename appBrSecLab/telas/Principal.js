@@ -33,9 +33,8 @@ export default function Principal({ navigation }) {
         <SafeAreaView style={styles.container} edges={['right', 'top', 'left']}>
           <SafeAreaView style={styles.cabecalho}>
               <Image
-                style={styles.logo}
-                source={require('../assets/logo.jpg')}
-                resizeMode='cover'
+                source={require('../assets/logo2.png')}
+                resizeMode='stretch'
               >
               </Image>
           </SafeAreaView>
@@ -105,7 +104,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
-    margin: 30,
+    marginTop: 100,
+    marginBottom: 50,
   },
   rodape: {
     flex: 1,
